@@ -137,7 +137,19 @@ ctx.fillStyle = "red";
 ctx.fill();
 ctx.closePath();
 
-gyroscope.addEventListener('reading', e => {
+if(window.DeviceMotionEvent){
+    window.addEventListener("devicemotion", motion, false);
+}else{
+    console.log("DeviceMotionEvent is not supported");
+}
+
+function motion(event){
+    console.log("Accelerometer: "
+      + event.accelerationIncludingGravity.x + ", "
+      + event.accelerationIncludingGravity.y + ", "
+      + event.accelerationIncludingGravity.z
+    );
+
     ctx.beginPath();
     ctx.rect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "grey";
@@ -150,8 +162,11 @@ gyroscope.addEventListener('reading', e => {
     ctx.fill();
     ctx.closePath();
 
-    y += gyroscope.x * 2
-    x += gyroscope.y * 2
+    y += event.accelerationIncludingGravity.x
+    x += event.accelerationIncludingGravity.y
+  }
+
+gyroscope.addEventListener('reading', e => {
 
     log(gyroscope.x)
 
@@ -232,11 +247,11 @@ function handleStart(evt) {
       }
     }
   }
+
   function log(msg) {
     var p = document.getElementById('log');
     p.innerHTML = msg + "\n" + p.innerHTML;
   }
-
 
   function ongoingTouchIndexById(idToFind) {
     for (var i = 0; i < ongoingTouches.length; i++) {
