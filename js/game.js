@@ -127,6 +127,24 @@ function attachEvent(node,name,func) {
     }
 };
 
+let gyroscope = new Gyroscope({frequency: 60});
+
+var x,y = 10
+gyroscope.addEventListener('reading', e => {
+    ctx.beginPath();
+    ctx.arc(x, y, 20, 0, 2 * Math.PI, false);  // a circle at the start
+    ctx.fillStyle = "red";
+    ctx.fill();
+
+    if (gyroscope.x > 10)
+        x += 1
+
+  console.log("Angular velocity along the X-axis " + gyroscope.x);
+  console.log("Angular velocity along the Y-axis " + gyroscope.y);
+  console.log("Angular velocity along the Z-axis " + gyroscope.z);
+});
+gyroscope.start();
+
 var ongoingTouches = [];
 
 function handleStart(evt) {
