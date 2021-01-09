@@ -151,9 +151,13 @@ gyroscope.addEventListener('reading', e => {
     ctx.closePath();
 
     if (gyroscope.x > 0.1)
-        x += 5
+        y += 5
     if (gyroscope.x < -0.1)
+        y -= 5
+    if (gyroscope.y > 0.1)
         x += 5
+    if (gyroscope.y < -0.1)
+        x -= 5
 
     log(gyroscope.x)
 
