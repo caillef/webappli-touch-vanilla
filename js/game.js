@@ -145,7 +145,7 @@ gyroscope.addEventListener('reading', e => {
     ctx.closePath();
 
     if (gyroscope.x > 10)
-        x += 1
+        x += 0.001
 
   console.log("Angular velocity along the X-axis " + gyroscope.x);
   console.log("Angular velocity along the Y-axis " + gyroscope.y);
