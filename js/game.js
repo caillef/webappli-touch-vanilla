@@ -139,14 +139,20 @@ ctx.closePath();
 
 gyroscope.addEventListener('reading', e => {
     ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "grey";
+    ctx.fill();
+    ctx.closePath();
+
+    ctx.beginPath();
     ctx.arc(x, y, 20, 0, 2 * Math.PI, false);  // a circle at the start
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
 
-    if (gyroscope.x > 0.5)
+    if (gyroscope.x > 0.1)
         x += 5
-    if (gyroscope.x < -0.5)
+    if (gyroscope.x < -0.1)
         x += 5
 
     log(gyroscope.x)
