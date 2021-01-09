@@ -129,12 +129,20 @@ function attachEvent(node,name,func) {
 
 let gyroscope = new Gyroscope({frequency: 60});
 
-var x,y = 10
+var x = 100
+var y = 100
+ctx.beginPath();
+ctx.arc(x, y, 20, 0, 2 * Math.PI, false);  // a circle at the start
+ctx.fillStyle = "red";
+ctx.fill();
+ctx.closePath();
+
 gyroscope.addEventListener('reading', e => {
     ctx.beginPath();
     ctx.arc(x, y, 20, 0, 2 * Math.PI, false);  // a circle at the start
     ctx.fillStyle = "red";
     ctx.fill();
+    ctx.closePath();
 
     if (gyroscope.x > 10)
         x += 1
