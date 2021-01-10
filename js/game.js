@@ -1,7 +1,7 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-canvas.width= window.innerWidth;
-canvas.height=window.innerHeight;
+canvas.width= document.documentElement.clientWidth || document.body.clientWidth;
+canvas.height=document.documentElement.clientHeight || document.body.clientHeight;
 
 var keyboard = {}
 const gameobjects = []
