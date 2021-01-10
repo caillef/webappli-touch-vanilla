@@ -163,7 +163,7 @@ function motion(event){
     ctx.fill();
     ctx.closePath();
 
-    z += event.accelerationIncludingGravity.z * 10
+    z += event.accelerationIncludingGravity.z
     y += event.accelerationIncludingGravity.x
     x += event.accelerationIncludingGravity.y
   }
