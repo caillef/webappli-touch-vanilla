@@ -8,10 +8,9 @@ const gameobjects = []
 const colors = [
     "blue",
     "red",
-    // "yellow",
-    // "green", 
-    // "orange",
-    "pink"
+    "yellow",
+    "green", 
+    "orange"
 ]
 
 function gameobject_create(x, y, dx, dy, c) {
@@ -174,7 +173,6 @@ function motion(event){
         circle.x = circle.r
       if (circle.x + circle.r > canvas.width)
         circle.x = canvas.width - circle.r
-  
     }
 
   }
@@ -195,9 +193,11 @@ function handleStart(evt) {
     canvas.getContext("2d");
     var touches = evt.changedTouches;
   
+
     for (var i = 0; i < touches.length; i++) {
       console.log("touchstart:" + i + "...");
       ongoingTouches.push(copyTouch(touches[i]));
+      circles.push(circle_create(touches[i].pageX, touches[i].pageY, 10 + Math.random() * 20, null, null, colors[Math.floor(Math.random() * colors.length)]))
       var color = colorForTouch(touches[i]);
       ctx.beginPath();
       ctx.arc(touches[i].pageX, touches[i].pageY, 20, 0, 2 * Math.PI, false);  // a circle at the start
