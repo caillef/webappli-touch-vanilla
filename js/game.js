@@ -6,11 +6,11 @@ canvas.height=document.documentElement.clientHeight || document.body.clientHeigh
 var keyboard = {}
 const gameobjects = []
 const colors = [
-    "blue",
-    "red",
-    "yellow",
-    "green", 
-    "orange"
+    "#f4f1de",
+    "#e07a5f",
+    "#3d405b",
+    "#81b29a", 
+    "#f2cc8f"
 ]
 
 function gameobject_create(x, y, dx, dy, c) {
