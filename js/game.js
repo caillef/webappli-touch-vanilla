@@ -163,12 +163,12 @@ function motion(event){
 
     for (let circle of circles) {
       circle.draw()
-      circle.y += event.accelerationIncludingGravity.y
+      circle.y += event.accelerationIncludingGravity.y * (1.5 - (circle.r - 10) / 20 + 0.5)
       if (circle.y - circle.r < 0)
         circle.y = circle.r
       if (circle.y + circle.r > canvas.height)
         circle.y = canvas.height - circle.r
-      circle.x -= event.accelerationIncludingGravity.x
+      circle.x -= event.accelerationIncludingGravity.x * (1.5 - (circle.r - 10) / 20 + 0.5)
       if (circle.x - circle.r < 0)
         circle.x = circle.r
       if (circle.x + circle.r > canvas.width)
