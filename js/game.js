@@ -162,13 +162,11 @@ function motion(event){
     ctx.fill();
     ctx.closePath();
 
-    y += event.accelerationIncludingGravity.x
-    x += event.accelerationIncludingGravity.y
+    y += event.accelerationIncludingGravity.y
+    x += event.accelerationIncludingGravity.x
   }
 
 gyroscope.addEventListener('reading', e => {
-
-    log(gyroscope.x)
 
   console.log("Angular velocity along the X-axis " + gyroscope.x);
   console.log("Angular velocity along the Y-axis " + gyroscope.y);
