@@ -166,8 +166,16 @@ function motion(event){
     ctx.closePath();
 
     y += event.accelerationIncludingGravity.y
+    if (y - z < 0)
+      y = z
+    if (y + z > canvas.height)
+      y = canvas.height - z
     x -= event.accelerationIncludingGravity.x
-    }
+    if (x - z < 0)
+      x = z
+    if (x + z > canvas.width)
+      x = canvas.width - z
+  }
 
 gyroscope.addEventListener('reading', e => {
 
