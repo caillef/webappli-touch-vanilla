@@ -131,6 +131,7 @@ let gyroscope = new Gyroscope({frequency: 60});
 
 var x = 200
 var y = 250
+var z = 20
 ctx.beginPath();
 ctx.arc(x, y, 20, 0, 2 * Math.PI, false);  // a circle at the start
 ctx.fillStyle = "red";
@@ -157,11 +158,12 @@ function motion(event){
     ctx.closePath();
 
     ctx.beginPath();
-    ctx.arc(x, y, 20, 0, 2 * Math.PI, false);  // a circle at the start
+    ctx.arc(x, y, z, 0, 2 * Math.PI, false);  // a circle at the start
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
 
+    z += event.accelerationIncludingGravity.z * 2
     y += event.accelerationIncludingGravity.y
     x += event.accelerationIncludingGravity.x
   }
