@@ -155,11 +155,11 @@ function motion(event){
       + event.accelerationIncludingGravity.z
     );
 
-    ctx.beginPath();
-    ctx.rect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "grey";
-    ctx.fill();
-    ctx.closePath();
+    // ctx.beginPath();
+    // ctx.rect(0, 0, canvas.width, canvas.height);
+    // ctx.fillStyle = "white";
+    // ctx.fill();
+    // ctx.closePath();
 
     for (let circle of circles) {
       circle.draw()
