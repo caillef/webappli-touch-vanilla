@@ -145,6 +145,10 @@ if(window.DeviceMotionEvent){
     console.log("DeviceMotionEvent is not supported");
 }
 
+const circles = [
+  circle_create(100, 100, 10 + Math.random() * 20, null, null, colors[Math.floor(Math.random() * colors.length)])
+]
+
 function motion(event){
     console.log("Accelerometer: "
       + event.accelerationIncludingGravity.x + ", "
@@ -158,22 +162,21 @@ function motion(event){
     ctx.fill();
     ctx.closePath();
 
-    ctx.beginPath();
-    ctx.arc(x, y, z, 0, 2 * Math.PI, false);  // a circle at the start
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.closePath();
+    for (let circle of circles) {
+      circle.draw()
+      circle.y += event.accelerationIncludingGravity.y
+      if (circle.y - circle.r < 0)
+        circle.y = circle.r
+      if (circle.y + circle.r > canvas.height)
+        circle.y = canvas.height - circle.r
+      circle.x -= event.accelerationIncludingGravity.x
+      if (circle.x - circle.r < 0)
+        circle.x = circle.r
+      if (circle.x + circle.r > canvas.width)
+        circle.x = canvas.width - circle.r
+  
+    }
 
-    y += event.accelerationIncludingGravity.y
-    if (y - z < 0)
-      y = z
-    if (y + z > canvas.height)
-      y = canvas.height - z
-    x -= event.accelerationIncludingGravity.x
-    if (x - z < 0)
-      x = z
-    if (x + z > canvas.width)
-      x = canvas.width - z
   }
 
 gyroscope.addEventListener('reading', e => {
