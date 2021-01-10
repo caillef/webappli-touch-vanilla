@@ -56,7 +56,6 @@ function rect_update() {
         this.dy = -this.dy
 }
 
-
 function circle_create(x, y, r, dx, dy, c) {
     let circle = gameobject_create(x, y, dx, dy, c)
     circle.r = r || 100
