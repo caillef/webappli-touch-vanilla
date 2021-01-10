@@ -163,9 +163,8 @@ function motion(event){
     ctx.fill();
     ctx.closePath();
 
-    z = event.accelerationIncludingGravity.z
     y += event.accelerationIncludingGravity.y
-    x += event.accelerationIncludingGravity.x
+    x -= event.accelerationIncludingGravity.x
     }
 
 gyroscope.addEventListener('reading', e => {
